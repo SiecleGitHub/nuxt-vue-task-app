@@ -1,5 +1,11 @@
 # Nuxt Minimal Starter
 
+A full-stack task management app built with **Nuxt**, **Vue**, **Nitro**, and **H3**. It includes a simple API endpoint for tasks and demonstrates a modern full-stack workflow with server-side API handling in a Nuxt project.
+
+It is base on the Syntax tutorial [Nuxt Crash Course 2025](https://www.youtube.com/watch?v=RhZZ0whiuT8).
+
+The app is deployed on Vercel [Nuxt task app on Vercel](https://nuxt-task-app-github-hbeu.vercel.app/).
+
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
 ## Setup
