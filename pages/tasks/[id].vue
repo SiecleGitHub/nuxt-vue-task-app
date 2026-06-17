@@ -1,9 +1,10 @@
 <script lang="ts" setup>
+const route = useRoute();
 const {
-  data: tasks,
+  data: task,
   error,
   status,
-} = await useFetch('/api/tasks', {
+} = await useFetch(`/api/tasks/${route.params.id}`, {
   lazy: true,
 });
 </script>
@@ -14,12 +15,9 @@ const {
     <article v-else-if="error" class="error">
       {{ error.statusMessage }}
     </article>
-    <div v-else>
-      <article v-for="task in tasks" :key="task.id">
+    <div v-else-if="task">
+      <article>
         {{ task.title }}
-        <div class="button-container">
-          <NuxtLink role="button" :to="{ name: 'tasks-id', params: { id: task.id } }">View</NuxtLink>
-        </div>
       </article>
     </div>
   </div>
