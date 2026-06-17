@@ -5,11 +5,15 @@ interface Task {
   completed: boolean;
 }
 
-const { data: tasks } = await useFetch<Task[]>('/api/tasks');
+const { data: tasks, error, status } = await useFetch<Task[]>('/api/tasks', { lazy: true });
 </script>
 <template>
   <h1>Tasks</h1>
-  <article v-for="task in tasks" :key="task.id">
-    <strong>{{ task.title }}</strong> - {{ task.completed ? 'Completed' : 'Pending' }}
-  </article>
+  <article v-if="status === 'pending'" aria-busy="true" />
+  <p v-else-if="error" class="error">Error: {{ error.message }}</p>
+  <div v-else>
+    <article v-for="task in tasks" :key="task.id">
+      <strong>{{ task.title }}</strong> - {{ task.completed ? 'Completed' : 'Pending' }}
+    </article>
+  </div>
 </template>
